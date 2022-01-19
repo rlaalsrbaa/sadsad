@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{%block content%}
+<div class="container" style="margin-top:50px;">
+    <div><a href="#" class="fs-1">{{board.name}}</a></div>
+    <hr>
+    <div class="card">
+        <div class="card-header">
+            {{article.subject}}
+        </div>
+
+        <div class="card-body text-center">
+            <p class="card-text" style="text-align:left;">{{article.content}}</p>
+            <button class="btn btn-primary like" name="{{article.id}}"><i class="far fa-thumbs-up"
+                                                                          style="display:inline;"></i>
+                <p id="count-{{ article.id }}" style="display:inline;">{{ article.voter.all.count }}</p>
+            </button>
+        </div>
+        <div class="card-footer text-muted">
+            {{article.reg_date}}
+            {% if request.user.id == article.user.id %}
+            <div>
+                <a href="{% url 'board:modify' article.id %}" class="btn btn-outline-primary"
+                   style="margin-right:10px;">수정</a>
+                <a href="{% url 'board:delete' article.id %}" class="btn btn-warning"
+                   onclick="if ( confirm('정말 삭제하시겠습니까?') == false ) return false">삭제</a>
+            </div>
+            {%endif%}
+        </div>
+    </div>
+    <div style="margin-top:30px;">전체 댓글
+        {% if article.comment_set.count > 0 %}
+        <span style="color:blue;">
+            {{ article.comment_set.count }}
+        </span>
+        {%else%}
+        0
+        {% endif %}개
+    </div>
+    <div class="container" style="margin-top:50px;">
+        {% for comment_ in comment %}
+        <div style="height:30px; text-align:left; background-color:gray;">
+            <p class="fs-6" style="line-height:30px;">{{ comment_.user.username }}{{ comment_.reg_date}}
+                {% if request.user.id == comment_.user.id %}
+                <a href="{% url 'board:comment_delete' board.id article.id comment_.id %}"
+                   onclick="if ( confirm('정말 삭제하시겠습니까?') == false ) return false"><i
+                        class="fas fa-trash-alt"></i></a></td>
+                {%endif%}
+            </p>
+        </div>
+        <div class="" style="height:100px;">
+            {{ comment_.content }}
+        </div>
+        {%endfor%}
+    </div>
+
+    <div>
+        <form method="post" action="{% url 'board:comment_write' board.id article.id%}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="content"></label>
+                <textarea class="form-control" name="content"
+                          id="content" rows="4"
+                          placeholder="내용을 입력하세요.">{{ form.content.value|default_if_none:'' }}</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin-top:10px; margin-bottom:10px;">등록</button>
+        </form>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(".like").click(function () { // .like 버튼을 클릭 감지
+        var pk = $(this).attr('name')
+        $.ajax({ // ajax로 서버와 통신
+            type: "POST", // 데이터를 전송하는 방법
+            url: "{% url 'board:article_like' %}", // 통신할 url을 지정
+            data: { 'pk': pk, 'csrfmiddlewaretoken': '{{ csrf_token }}' }, // 서버로 데이터 전송시 옵션, pk를 넘겨야 어떤 video인지 알 수 있음
+            dataType: "json",
+            success: function (response) { // 성공
+                $("#count-" + pk).html(response.likes_count); // 좋아요 개수 변경
+            },
+            error: function (request, status, error) { // 실패
+                alert("로그인이 필요합니다.")
+                window.location.replace("/accounts/login/") // 로그인 페이지로 넘어가기
+            },
+        });
+    })
+
+
+
+
+
+</script>
+{% endblock%}

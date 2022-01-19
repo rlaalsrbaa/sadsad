@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+  <div class="row"></div>
+        <div class="col-md-4 offset-md-4">
+            <div class="login-form bg-light mt-4 p-4">
+                <form method="post" action="{% url 'accounts:login' %}" class="row g-3">
+                    <h4>Welcome Back</h4>
+                    {% csrf_token %}
+                    {% include "form_errors.html" %}
+                    <div class="col-12">
+                        <label for="username">사용자 ID</label>
+                        <input type="text" name="username" class="form-control" placeholder="Username" id="username"
+                               value="{{ form.username.value|default_if_none:'' }}">
+                    </div>
+                    <div class=" col-12">
+                        <label for="password">비밀번호</label>
+                        <input type="password" name="password" class="form-control" placeholder="Password" id="password"
+                               value="{{ form.password.value|default_if_none:'' }}">
+                    </div>
+                    <div class="col-12">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">ID를 기억합니다.</label>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-dark float-end">로그인</button>
+                    </div>
+                </form>
+                <hr class="mt-4">
+                <div class="col-12">
+                    <p class="text-center mb-0">아직 아이디가 없다면? <a href="{% url 'accounts:signup'%}">회원가입</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
