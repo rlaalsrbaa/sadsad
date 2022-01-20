@@ -60,6 +60,7 @@ def article_write(request: HttpRequest, board_id):
                 article = form.save(commit=False)
                 article.board_id = board.id
                 article.user_id = request.user.id
+                article.writer = request.user.username
                 article.save()
                 return redirect(returnUrl)
         else:

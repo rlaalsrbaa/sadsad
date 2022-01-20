@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     # 서드파티
     'debug_toolbar',
     'django_bootstrap5',
-
+    'django_summernote',
     # Local App
     'accounts.apps.AccountsConfig',
     'board.apps.BoardConfig',
@@ -147,3 +147,8 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = 'accounts:login'
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

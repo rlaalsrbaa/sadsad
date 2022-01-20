@@ -38,3 +38,7 @@ class Comment(models.Model):
     voter = models.ManyToManyField(User, related_name='voter_comment')
     def __str__(self):
         return self.content
+
+class Photo(models.Model):
+    article = models.ForeignKey(Article, on_delete=models.CASCADE, null=True)
+    image = models.ImageField(upload_to='images/', blank=True, null=True)
