@@ -6,10 +6,19 @@ import django.contrib.auth.validators
 from django.db import migrations, models
 import django.utils.timezone
 
-def gen_data(app, schema_editor):
-    User(password="1234", username="user1", name="홍길동").save()
-    User(password="1234", username="user2", name="홍길순").save()
-    User(password="1234", username="user3", name="임꺽정").save()
+def gen_master(apps, schema_editor):
+    User.objects.create_user(username="admin", password="admin", name="관리자", email="", gender="F",
+                             is_superuser=True, is_staff=True)
+
+    for id in range(2, 6):
+        username = f"user{id}"
+        password = f"user{id}"
+        name = f"이름{id}"
+        email = f"test{id}@test.com"
+        gender = 'M'
+
+        User.objects.create_user(username=username, password=password, name=name, email=email,
+                                 gender=gender)
 
 
 class Migration(migrations.Migration):
@@ -38,7 +47,9 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=100, verbose_name='이름')),
                 ('groups', models.ManyToManyField(blank=True, help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.', related_name='user_set', related_query_name='user', to='auth.Group', verbose_name='groups')),
                 ('user_permissions', models.ManyToManyField(blank=True, help_text='Specific permissions for this user.', related_name='user_set', related_query_name='user', to='auth.Permission', verbose_name='user permissions')),
-            ],
+                ('gender', models.CharField(blank=True, choices=[('M', '남성'), ('F', '여성')], max_length=1,verbose_name='성별')),
+
+                    ],
             options={
                 'verbose_name': 'user',
                 'verbose_name_plural': 'users',
@@ -48,5 +59,5 @@ class Migration(migrations.Migration):
                 ('objects', django.contrib.auth.models.UserManager()),
             ],
         ),
-        migrations.RunPython(gen_data)
+        migrations.RunPython(gen_master)
     ]

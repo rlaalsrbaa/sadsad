@@ -22,8 +22,10 @@ def article_list(request: HttpRequest, board_id):
     board = get_object_or_404(Board, id=board_id)
     kw = request.GET.get('kw', '')
     page = request.GET.get('page', '1')  # 페이지
+    voters = {}
     if not kw:
         article_list = Article.objects.filter(board=board.id).order_by('-id')
+
     else:
         article_list = Article.objects.filter(board=board.id, ).filter(
             Q(subject__icontains=kw) | Q(content__icontains=kw)).order_by('-id')
@@ -53,7 +55,7 @@ def article_write(request: HttpRequest, board_id):
         board = Board.objects.get(id=board_id)
         returnUrl = f"/board/{board.id}"
         if request.method == 'POST':
-            form = ArticleForm(request.POST)
+            form = ArticleForm(request.POST, board_id)
             if form.is_valid():
                 article = form.save(commit=False)
                 article.board_id = board.id
@@ -140,13 +142,13 @@ def article_like(request):
     article = get_object_or_404(Article, pk=pk)
     user = request.user
 
+    if request.user == article.user:
+        return request
+
     if article.voter.filter(id=user.id).exists():
         article.voter.remove(user)
-        article.votes - 1
-        article.save()
     else:
         article.voter.add(user)
-        article.votes + 1
-        article.save()
+
     context = {'likes_count': article.count_voter_user()}
     return HttpResponse(json.dumps(context), content_type="application/json")

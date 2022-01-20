@@ -3,7 +3,7 @@
 from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
-
+from accounts.models import User
 from board.models import Article, Board
 
 
@@ -13,11 +13,12 @@ def gen_data(app, schema_editor):
     for id in range(1, 20):
         subject = f"안녕하세요{id}"
         content = f"좋은 아침입니다.{id}"
-        Article(board_id=board.id, user_id=1, subject=subject, content=content).save()
+        user = User.objects.get(id=1)
+        Article(board_id=board.id, user_id=1, subject=subject, content=content, writer=user.username).save()
     for id in range(1, 20):
         subject = f"다들 점심은 드셨나요?{id}"
         content = f"맛있게 먹었습니다..{id}"
-        Article(board_id=board.id, user_id=1, subject=subject, content=content).save()
+        Article(board_id=board.id, user_id=1, subject=subject, content=content, writer=user.username).save()
 
 
 class Migration(migrations.Migration):
@@ -38,6 +39,7 @@ class Migration(migrations.Migration):
                 ('is_blind', models.BooleanField(default=False, verbose_name='공개 여부')),
                 ('board', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='board.board')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('writer', models.CharField(max_length=100, verbose_name='글쓴이')),
             ],
         ),
         migrations.RunPython(gen_data),

@@ -26,14 +26,15 @@
         <tbody>
 
         {% for article in article_list%}
-
         <tr>
             <th scope="row"><h6>{{article.id}}</h6></th>
             <td><a href="{% url 'board:detail' article.board_id article.id %}">{{ article.subject }}</a></td>
             <td><a href="#">
-                {{article.user}}
+                {{article.writer}}
             </a></td>
-            <td><h6>{{ article.voter.count}}</h6></td>
+            <td><h6>
+               {{article.voter.count}}
+            </h6></td>
             <td><h6>{{ article.reg_date }}</h6></td>
         </tr>
 
