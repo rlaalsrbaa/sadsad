@@ -143,7 +143,7 @@ AUTH_USER_MODEL = 'accounts.User'
 STATICFILES_DIRS = [
     BASE_DIR / 'base/static',
 ]
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = 'accounts:login'
@@ -151,4 +151,4 @@ LOGOUT_REDIRECT_URL = 'accounts:login'
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

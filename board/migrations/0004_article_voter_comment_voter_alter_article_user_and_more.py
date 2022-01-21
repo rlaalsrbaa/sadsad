@@ -18,6 +18,7 @@ class Migration(migrations.Migration):
             name='voter',
             field=models.ManyToManyField(related_name='voter_article', to=settings.AUTH_USER_MODEL),
         ),
+
         migrations.AddField(
             model_name='comment',
             name='voter',

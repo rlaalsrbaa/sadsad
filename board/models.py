@@ -21,6 +21,8 @@ class Article(models.Model):
     is_blind = models.BooleanField('공개 여부', default=False)
     voter = models.ManyToManyField(User, related_name='voter_article')
     writer = models.CharField('글쓴이', max_length=100)
+    article_photo = models.ImageField(blank=True, null=True)
+
     def count_voter_user(self):
         return self.voter.count()
 
