@@ -9,7 +9,7 @@
                     {% csrf_token %}
                     {% include "form_errors.html" %}
                     <div class="col-12">
-                        <label for="username">사용자 ID</label>
+                        <label for="username">아이디</label>
                         <input type="text" name="username" class="form-control" placeholder="Username" id="username"
                                value="{{ form.username.value|default_if_none:'' }}">
                     </div>
@@ -21,15 +21,17 @@
                     <div class="col-12">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="rememberMe">
-                            <label class="form-check-label" for="rememberMe">ID를 기억합니다.</label>
+                            <label class="form-check-label" for="rememberMe">아이디를 기억합니다.</label>
                         </div>
                     </div>
                     <div class="col-12">
-                        <button type="submit" class="btn btn-dark float-end">로그인</button>
+                        <button type="submit" class="btn-btn primary float-end">로그인</button>
                     </div>
                 </form>
                 <hr class="mt-4">
                 <div class="col-12">
+                    <p class="text-center mb-0">아이디가 기억나지 않는다면? <a href="{% url 'accounts:find_username' %}">아이디찾기</a></p>
+                    <hr>
                     <p class="text-center mb-0">아직 아이디가 없다면? <a href="{% url 'accounts:signup'%}">회원가입</a></p>
                 </div>
             </div>

@@ -4,15 +4,16 @@
 <div class="container-lg">
     <div class="input-group" style="margin-top:30px;">
         <div class="form-outline">
-            <form class="d-flex">
+            <form class="t-flex">
                 <input class="form-control me-2" type="search" name="kw" placeholder="검색어를 입력해주세요."
                        aria-label="Search">
-                <button type="button" class="btn btn-primary">
+                <button class="btn btn-outline-success t-whitespace-nowrap" type="submit">
                     <i class="fas fa-search"></i>
                 </button>
             </form>
         </div>
     </div>
+    {% if article_list %}
     <table class="table" style="margin-top:30px;">
         <thead>
         <tr>
@@ -24,8 +25,7 @@
         </tr>
         </thead>
         <tbody>
-
-        {% for article in article_list%}
+        {% for article in article_list %}
         <tr>
             <th scope="row"><h6>{{article.id}}</h6></th>
             <td><a href="{% url 'board:detail' article.board_id article.id %}">{{ article.subject }}</a></td>
@@ -33,13 +33,19 @@
                 {{article.writer}}
             </a></td>
             <td><h6>
-               {{article.voter.count}}
+                {{article.voter.count}}
             </h6></td>
             <td><h6>{{ article.reg_date }}</h6></td>
         </tr>
-
         {%endfor%}
-
+        {% else %}
+        <div class="t-text-center t-text-gray-400 t-flex justify-content-center" style="height:500px; line-height:500px;">
+            <p>
+            <i class="far fa-sad-tear"></i>
+            게시글이 없습니다.
+            </p>
+        </div>
+        {%endif%}
         </tbody>
     </table>
     {% if request.user.is_authenticated %}

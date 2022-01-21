@@ -22,7 +22,7 @@ def article_list(request: HttpRequest, board_id):
     board = get_object_or_404(Board, id=board_id)
     kw = request.GET.get('kw', '')
     page = request.GET.get('page', '1')  # 페이지
-    voters = {}
+
     if not kw:
         article_list = Article.objects.filter(board=board.id).order_by('-id')
 

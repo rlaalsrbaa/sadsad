@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+<div class="container t-w-[50rem]" style="margin-top:50px;">
+    <div class="card">
+        <div class="card-header">
+            아이디 찾기
+        </div>
+        <div class="card-body">
+            <form>
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% bootstrap_button button_type="submit" content="아이디찾기" %}
+                {% bootstrap_button button_type="reset" content="취소" %}
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

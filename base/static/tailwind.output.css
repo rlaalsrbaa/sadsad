@@ -472,3 +472,91 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 0px;
   margin-bottom: 0px;
 }
+
+.t-mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.t-mt-6 {
+  margin-top: 1.5rem;
+}
+
+.t-flex {
+  display: flex;
+}
+
+.t-w-\[5rem\] {
+  width: 5rem;
+}
+
+.t-w-\[32rem\] {
+  width: 32rem;
+}
+
+.t-w-\[50rem\] {
+  width: 50rem;
+}
+
+.t-w-full {
+  width: 100%;
+}
+
+.t-max-w-screen-md {
+  max-width: 768px;
+}
+
+.t-flex-1 {
+  flex: 1 1 0%;
+}
+
+.t-items-center {
+  align-items: center;
+}
+
+.t-justify-center {
+  justify-content: center;
+}
+
+.t-whitespace-nowrap {
+  white-space: nowrap;
+}
+
+.t-rounded-full {
+  border-radius: 9999px;
+}
+
+.t-rounded-none {
+  border-radius: 0px;
+}
+
+.t-text-center {
+  text-align: center;
+}
+
+.t-text-gray-400 {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+
+@font-face {
+  font-family: 'GmarketSansMedium';
+
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+
+  font-weight: normal;
+
+  font-style: normal;
+}
+
+html > body ul,
+html > body li {
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+
+html > body {
+  font-family: "GmarketSansMedium";
+  text-underline-position: under;
+}
