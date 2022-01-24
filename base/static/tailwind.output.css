@@ -468,30 +468,127 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-backdrop-sepia:  ;
 }
 
+.t-container {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .t-container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .t-container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .t-container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .t-container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .t-container {
+    max-width: 1536px;
+  }
+}
+
+.t-right-0 {
+  right: 0px;
+}
+
+.t-order-1 {
+  order: 1;
+}
+
+.t-order-2 {
+  order: 2;
+}
+
 .t-my-\[0px\] {
   margin-top: 0px;
   margin-bottom: 0px;
-}
-
-.t-mx-4 {
-  margin-left: 1rem;
-  margin-right: 1rem;
 }
 
 .t-mt-6 {
   margin-top: 1.5rem;
 }
 
+.t-mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.t-mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+.t-mt-5 {
+  margin-top: 1.25rem;
+}
+
+.t-mb-5 {
+  margin-bottom: 1.25rem;
+}
+
+.t-mt-2 {
+  margin-top: 0.5rem;
+}
+
+.t-mt-3 {
+  margin-top: 0.75rem;
+}
+
+.t-mb-3 {
+  margin-bottom: 0.75rem;
+}
+
+.t-mb-10 {
+  margin-bottom: 2.5rem;
+}
+
+.t-ml-3 {
+  margin-left: 0.75rem;
+}
+
+.t-inline-block {
+  display: inline-block;
+}
+
 .t-flex {
   display: flex;
 }
 
-.t-w-\[5rem\] {
-  width: 5rem;
+.t-grid {
+  display: grid;
 }
 
-.t-w-\[32rem\] {
-  width: 32rem;
+.t-h-10 {
+  height: 2.5rem;
+}
+
+.t-h-5 {
+  height: 1.25rem;
+}
+
+.t-h-8 {
+  height: 2rem;
+}
+
+.t-min-h-full {
+  min-height: 100%;
+}
+
+.t-min-h-screen {
+  min-height: 100vh;
 }
 
 .t-w-\[50rem\] {
@@ -502,41 +599,181 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 100%;
 }
 
+.t-max-w-screen-sm {
+  max-width: 640px;
+}
+
 .t-max-w-screen-md {
   max-width: 768px;
+}
+
+.t-max-w-screen-lg {
+  max-width: 1024px;
 }
 
 .t-flex-1 {
   flex: 1 1 0%;
 }
 
-.t-items-center {
-  align-items: center;
+.t-cursor-pointer {
+  cursor: pointer;
 }
 
-.t-justify-center {
-  justify-content: center;
+.t-flex-col {
+  flex-direction: column;
+}
+
+.t-justify-start {
+  justify-content: flex-start;
+}
+
+.t-justify-end {
+  justify-content: flex-end;
 }
 
 .t-whitespace-nowrap {
   white-space: nowrap;
 }
 
-.t-rounded-full {
-  border-radius: 9999px;
+.t-rounded-sm {
+  border-radius: 0.125rem;
 }
 
-.t-rounded-none {
-  border-radius: 0px;
+.t-rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.t-border-y-4 {
+  border-top-width: 4px;
+  border-bottom-width: 4px;
+}
+
+.t-border-t-4 {
+  border-top-width: 4px;
+}
+
+.t-border-t-2 {
+  border-top-width: 2px;
+}
+
+.t-border-b-2 {
+  border-bottom-width: 2px;
+}
+
+.t-bg-neutral-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 229 229 / var(--tw-bg-opacity));
+}
+
+.t-bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.t-bg-current {
+  background-color: currentColor;
+}
+
+.t-bg-transparent {
+  background-color: transparent;
+}
+
+.t-bg-slate-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+}
+
+.t-bg-slate-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 250 252 / var(--tw-bg-opacity));
+}
+
+.t-bg-slate-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+}
+
+.t-bg-cyan-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(103 232 249 / var(--tw-bg-opacity));
+}
+
+.t-bg-slate-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
+}
+
+.t-py-\[20px\] {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.t-pl-20 {
+  padding-left: 5rem;
+}
+
+.t-pl-6 {
+  padding-left: 1.5rem;
+}
+
+.t-pr-6 {
+  padding-right: 1.5rem;
+}
+
+.t-pt-6 {
+  padding-top: 1.5rem;
+}
+
+.t-pb-6 {
+  padding-bottom: 1.5rem;
+}
+
+.t-pb-5 {
+  padding-bottom: 1.25rem;
+}
+
+.t-pt-10 {
+  padding-top: 2.5rem;
 }
 
 .t-text-center {
   text-align: center;
 }
 
+.t-text-right {
+  text-align: right;
+}
+
+.t-text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.t-text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
 .t-text-gray-400 {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+
+.t-text-blue-600\/50 {
+  color: rgb(37 99 235 / 0.5);
+}
+
+.t-text-blue-300\/50 {
+  color: rgb(147 197 253 / 0.5);
+}
+
+.t-text-blue-600\/75 {
+  color: rgb(37 99 235 / 0.75);
+}
+
+.t-text-cyan-300 {
+  --tw-text-opacity: 1;
+  color: rgb(103 232 249 / var(--tw-text-opacity));
 }
 
 @font-face {

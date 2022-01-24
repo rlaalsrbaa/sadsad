@@ -20,9 +20,10 @@ def notice(request: HttpRequest):
 
 def article_list(request: HttpRequest, board_id):
     board = get_object_or_404(Board, id=board_id)
+    comment = get_object_or_404(Board)
+
     kw = request.GET.get('kw', '')
     page = request.GET.get('page', '1')  # 페이지
-
     if not kw:
         article_list = Article.objects.filter(board=board.id).order_by('-id')
 
@@ -30,11 +31,12 @@ def article_list(request: HttpRequest, board_id):
         article_list = Article.objects.filter(board=board.id, ).filter(
             Q(subject__icontains=kw) | Q(content__icontains=kw)).order_by('-id')
 
-    paginator = Paginator(article_list, 19)  # 페이지당 10개씩 보여주기
+    paginator = Paginator(article_list, 20)  # 페이지당 10개씩 보여주기
     page_obj = paginator.get_page(page)
 
     context = {'article_list': page_obj,
                'board': board,
+               'comment': comment,
                }
     return render(request, 'board/article_list.html', context)
 
@@ -43,9 +45,23 @@ def article_detail(request: HttpRequest, board_id, article_id):
     article = get_object_or_404(Article, id=article_id)
     board = get_object_or_404(Board, id=article.board_id)
     comment = Comment.objects.filter(article_id=article_id)
+
+    kw = request.GET.get('kw', '')
+    page = request.GET.get('page', '1')  # 페이지
+    if not kw:
+        article_list = Article.objects.filter(board=board.id).order_by('-id')
+
+    else:
+        article_list = Article.objects.filter(board=board.id, ).filter(
+            Q(subject__icontains=kw) | Q(content__icontains=kw)).order_by('-id')
+
+    paginator = Paginator(article_list, 20)  # 페이지당 10개씩 보여주기
+    page_obj = paginator.get_page(page)
+
     context = {'article': article,
                'board': board,
-               'comment': comment}
+               'comment': comment,
+               'article_list': page_obj}
     return render(request, 'board/article_detail.html', context)
 
 
@@ -61,6 +77,7 @@ def article_write(request: HttpRequest, board_id):
                 article.board_id = board.id
                 article.user_id = request.user.id
                 article.writer = request.user.username
+
                 article.save()
                 return redirect(returnUrl)
         else:
