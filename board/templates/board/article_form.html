@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container">
-    <h1 class="t-mt-3">게시글 등록</h1>
+    <h1 class="t-mt-3 t-text-xl	">게시글 등록</h1>
     <form method="post" class="post-form my-3">
         {% csrf_token %}
         {{ form.as_p }}

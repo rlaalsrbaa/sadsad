@@ -8,16 +8,18 @@
             <div class="card-header">
                 {{article.subject}}
             </div>
-            <div class="card-body">
-                <p class="card-text" style="text-align:left;">{{article.content|safe}}</p>
-                {% if article.mainphoto %}
-                <img src="{{ article.photo.url }}" alt="" height="600">
-                <br>
-                {% endif %}
-                <button class="t-mt-6 btn btn-primary like" name="{{article.id}}"><i class="far fa-thumbs-up"
-                                                                                     style="display:inline;"></i>
-                    <p id="count-{{ article.id }}" style="display:inline;">{{ article.voter.all.count }}</p>
-                </button>
+            <div class="card-body t-min-h-screen t-flex-wrap">
+                    <p class="card-text t-text-left">{{article.content|safe}}</p>
+                    {% if article.mainphoto %}
+                    <img src="{{ article.photo.url }}" alt="" height="600">
+                    <br>
+                    {% endif %}
+                <div class="t-w-full t-flex t-justify-center">
+                    <button class="t-mt-6 btn btn-primary like" name="{{article.id}}"><i class="far fa-thumbs-up"
+                                                                                         style="display:inline;"></i>
+                        <p id="count-{{ article.id }}" style="display:inline;">{{ article.voter.all.count }}</p>
+                    </button>
+                </div>
             </div>
             <div class="card-footer text-muted">
                 {{article.reg_date}}
@@ -34,7 +36,7 @@
             {% if article.comment.count > 0 %}
             <span class="text-danger small ml-2">{{ article.comment.count }}</span> 개
             {%else%}
-            <span>0 개</span>
+            <span class="t-text-slate-400">0</span>개
             {% endif %}
         </div>
         <div class="container">
@@ -172,6 +174,8 @@
             },
         });
     })
+
+
 
 
 

@@ -557,6 +557,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: flex;
 }
 
+.t-flow-root {
+  display: flow-root;
+}
+
 .t-grid {
   display: grid;
 }
@@ -579,6 +583,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-h-11 {
   height: 2.75rem;
+}
+
+.t-h-fit {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .t-max-h-screen {
@@ -645,6 +655,20 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-justify-end {
   justify-content: flex-end;
+}
+
+.t-justify-center {
+  justify-content: center;
+}
+
+.t-space-y-0 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0px * var(--tw-space-y-reverse));
+}
+
+.t-self-end {
+  align-self: flex-end;
 }
 
 .t-whitespace-nowrap {
@@ -832,6 +856,15 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-text-teal-400 {
   --tw-text-opacity: 1;
   color: rgb(45 212 191 / var(--tw-text-opacity));
+}
+
+.t-text-inherit {
+  color: inherit;
+}
+
+.t-text-slate-400 {
+  --tw-text-opacity: 1;
+  color: rgb(148 163 184 / var(--tw-text-opacity));
 }
 
 @font-face {
