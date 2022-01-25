@@ -2,11 +2,11 @@
 
 {% block content %}
 <div class="container">
-    <h5 class="my-3 border-bottom pb-2">게시글 등록</h5>
+    <h1 class="t-mt-3">게시글 등록</h1>
     <form method="post" class="post-form my-3">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">저장하기</button>
+        <button type="submit" class="t-mt-3 btn btn-outline-primary">저장하기</button>
     </form>
 </div>
 {% endblock %}

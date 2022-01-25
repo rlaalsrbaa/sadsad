@@ -18,6 +18,7 @@ from accounts.forms import SignupForm, FindUsernameForm
 
 @logout_required
 def login(request: HttpRequest):
+
     return LoginView.as_view(template_name="accounts/login.html")(request)
 
 @logout_required
@@ -30,7 +31,7 @@ def signup(request: HttpRequest):
             messages.success(request, "회원가입 환영합니다.")
             # signed_user.send_welcome_email()  # FIXME: Celery로 처리하는 것을 추천.
             next_url = request.GET.get('next', '/')
-            return redirect('index')
+            return redirect(next_url)
     else:
         form = SignupForm()
     return render(request, 'accounts/signup.html', {

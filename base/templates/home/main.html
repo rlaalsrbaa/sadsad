@@ -1,4 +1,89 @@
 {% extends "layout.html" %}
 
 {% block content%}
+<section class="section-main-index">
+    <div class="t-bg-slate-100 t-min-h-screen">
+        <div class="t-bg-white t-pl-6 t-pr-6 t-pt-6 t-max-w-screen-lg t-min-h-screen t-m-auto">
+            <div class="t-flex t-flex-wrap">
+                <!-- 동물게시판 시작 -->
+                {% if animal_index %}
+                <div style="width:450px;" class=" t-mr-3">
+                    <a href="{% url 'board:category' 4 %}"
+                       class="t-text-teal-400 fs-1 t-my-2 t-border-b-2 t-border-black t-w-max">동물 게시판</a>
+                    <div>
+                        {% for animal in animal_index %}
+                        <div class="t-mb-1 t-cursor-pointer t-border-b-2 border-indigo-500"
+                             onclick="location.href='{% url 'board:detail' animal.board_id animal.id%}'">
+                            <div class=" t-w-max">
+                                <span class="text-base t-h-5 t-leading-1 t-mr-2">{{ animal.subject}}</span>
+                                <span class="t-text-xs t-text-blue-600/75">{{ animal.comment.count}}</span>
+                            </div>
+                        </div>
+                        {%endfor%}
+                    </div>
+                </div>
+                {%endif%}
+                <!-- 동물게시판 끝 -->
+                <!-- 유머게시판 시작 -->
+                {% if humor_index %}
+                <div style="width:450px;">
+                    <a href="{% url 'board:category' 3 %}"
+                       class="t-text-teal-400 fs-1 t-my-2 t-border-b-2 t-border-black t-w-max">유머 게시판</a>
+                    <div>
+                        {% for humor in humor_index %}
+                        <div class="t-mb-1 t-cursor-pointer t-border-b-2 border-indigo-500"
+                             onclick="location.href='{% url 'board:detail' humor.board_id humor.id%}'">
+                            <div class=" t-w-max">
+                                <span class="text-base t-h-5 t-leading-1">{{ humor.subject}}</span>
+                                <span class="t-text-xs t-text-blue-600/75">{{ humor.comment.count}}</span>
+                            </div>
+                        </div>
+                        {%endfor%}
+                    </div>
+                </div>
+                {%endif%}
+                <!-- 유머게시판 끝 -->
+                <!-- 자유게시판 시작 -->
+                {% if free_index %}
+                <div style="width:450px;" class="t-mr-3">
+                    <a href="{% url 'board:category' 2 %}"
+                       class="t-text-teal-400 fs-1 t-my-2 t-border-b-2 t-border-black t-w-max">유머 게시판</a>
+                    <div>
+                        {% for free in free_index %}
+                        <div class="t-mb-1 t-cursor-pointer t-border-b-2 border-indigo-500"
+                             onclick="location.href='{% url 'board:detail' free.board_id free.id%}'">
+                            <div class=" t-w-max">
+                                <span class="text-base t-h-5 t-leading-1">{{ free.subject}}</span>
+                                <span class="t-text-xs t-text-blue-600/75">{{ free.comment.count}}</span>
+                            </div>
+                        </div>
+                        {%endfor%}
+                    </div>
+                </div>
+                {%endif%}
+                <!-- 자유게시판 끝 -->
+                <!-- 공지사항 시작 -->
+                {% if notice_index %}
+                <div style="width:450px;">
+                    <a href="{% url 'board:category' 1 %}"
+                       class="t-text-teal-400 fs-1 t-my-2 t-border-b-2 t-border-black t-w-max">공지사항</a>
+                    <div>
+                        {% for notice in notice_index %}
+                        <div class="t-mb-1 t-cursor-pointer t-border-b-2 border-indigo-500"
+                             onclick="location.href='{% url 'board:detail' notice.board_id notice.id%}'">
+                            <div class=" t-w-max">
+                                <span class="text-base t-h-5 t-leading-1">{{ notice.subject}}</span>
+                                <span class="t-text-xs t-text-blue-600/75">{{ notice.comment.count}}</span>
+                            </div>
+                        </div>
+                        {%endfor%}
+                    </div>
+                </div>
+                {%endif%}
+                <!-- 공지사항 끝 -->
+            </div>
+        </div>
+    </div>
+
+</section>
 {% endblock %}

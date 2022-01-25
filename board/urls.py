@@ -3,7 +3,7 @@ from . import views
 app_name = 'board'
 
 urlpatterns = [
-    path('1/', views.notice, name='notice'),
+    path('<int:board_id>/', views.category, name='category'),
     path('<int:board_id>/article/<int:article_id>/', views.article_detail, name='detail'),
     path('<int:board_id>/article/<int:article_id>/comment/write/', views.comment_write, name='comment_write'),
     path('<int:board_id>/article/<int:article_id>/comment/<int:comment_id>/delete/', views.comment_delete, name='comment_delete'),

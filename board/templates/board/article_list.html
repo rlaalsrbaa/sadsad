@@ -18,7 +18,7 @@
                 </div>
                 {% if request.user.is_authenticated %}
                 <div class="t-g-col-4  t-flex t-justify-end">
-                    <a href=" {% url 'board:write' board.id%}" class="btn btn-primary" style="margin-top:30px;">글 작성</a>
+                    <a href=" {% url 'board:write' board.id%}" class="t-mt-3 btn btn-outline-primary">글 작성</a>
                 </div>
                 {%endif%}
             </div>

@@ -14,13 +14,12 @@ from board.models import Board, Article, Comment
 from accounts.models import User
 
 
-def notice(request: HttpRequest):
-    return article_list(request, 1)
+def category(request: HttpRequest, board_id):
+    return article_list(request, board_id)
 
 
 def article_list(request: HttpRequest, board_id):
     board = get_object_or_404(Board, id=board_id)
-    comment = get_object_or_404(Board)
 
     kw = request.GET.get('kw', '')
     page = request.GET.get('page', '1')  # 페이지
@@ -36,7 +35,6 @@ def article_list(request: HttpRequest, board_id):
 
     context = {'article_list': page_obj,
                'board': board,
-               'comment': comment,
                }
     return render(request, 'board/article_list.html', context)
 

@@ -1,43 +1,45 @@
 {% extends "layout.html" %}
 {% block content %}
 <div class="container">
-  <div class="row"></div>
-        <div class="col-md-4 offset-md-4">
-            <div class="login-form bg-light mt-4 p-4">
-                <form method="post" action="{% url 'accounts:login' %}" class="row g-3">
-                    <h4>Welcome Back</h4>
-                    {% csrf_token %}
-                    {% include "form_errors.html" %}
-                    <div class="col-12">
-                        <label for="username">아이디</label>
-                        <input type="text" name="username" class="form-control" placeholder="Username" id="username"
-                               value="{{ form.username.value|default_if_none:'' }}">
-                    </div>
-                    <div class=" col-12">
-                        <label for="password">비밀번호</label>
-                        <input type="password" name="password" class="form-control" placeholder="Password" id="password"
-                               value="{{ form.password.value|default_if_none:'' }}">
-                    </div>
-                    <div class="col-12">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="rememberMe">
-                            <label class="form-check-label" for="rememberMe">아이디를 기억합니다.</label>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <button type="submit" class="btn-btn primary float-end">로그인</button>
-                    </div>
-                </form>
-                <hr class="mt-4">
+    <div class="row"></div>
+    <div class="col-md-4 offset-md-4">
+        <div class="login-form bg-light mt-4 p-4">
+            <form method="post" action="{% url 'accounts:login' %}" class="row g-3">
+                <h4>Welcome Back</h4>
+                <hr>
+                {% csrf_token %}
+                {% include "form_errors.html" %}
                 <div class="col-12">
-                    <p class="text-center mb-0">아이디가 기억나지 않는다면? <a href="{% url 'accounts:find_username' %}">아이디찾기</a></p>
-                    <hr>
-                    <p class="text-center mb-0">아직 아이디가 없다면? <a href="{% url 'accounts:signup'%}">회원가입</a></p>
-                    <a href="{% url 'accounts:kakao_login' %}">카카오로 로그인</a>
+                    <label for="username">아이디</label>
+                    <input type="text" name="username" class="form-control" placeholder="Username" id="username"
+                           value="{{ form.username.value|default_if_none:'' }}">
+                </div>
+                <div class=" col-12">
+                    <label for="password">비밀번호</label>
+                    <input type="password" name="password" class="form-control" placeholder="Password" id="password"
+                           value="{{ form.password.value|default_if_none:'' }}">
+                </div>
+                <input type="hidden" name="next" value="{{ next }}">
+                <div class="col-12">
+                    <button type="submit" class="btn btn-outline-primary float-end">로그인</button>
+                </div>
+            </form>
+            <div class="t-mt-4">
+                <p class="t-h-5 t-leading-9 t-border-t-4 border-indigo-500">아이디가 기억나지 않는다면? <a
+                        href="{% url 'accounts:find_username' %}"
+                        class="t-text-cyan-600 float-end">아이디찾기</a></p>
+                <p class="t-h-11 t-leading-10 t-mt-5 t-border-y-4 border-indigo-500">아직 아이디가 없다면? <a
+                        href="{% url 'accounts:signup'%}" class="t-text-cyan-600 float-end">회원가입</a>
+                </p>
+
+                <div class="t-bg-yellow-400 btn btn-outline t-mt-3">
+                    <a href="{% url 'accounts:kakao_login' %}">카카오 로그인 <i
+                            class="far fa-comment"></i></a>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 {% endblock %}
