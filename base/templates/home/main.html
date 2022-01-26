@@ -34,7 +34,7 @@
                         <div class="t-mb-1 t-cursor-pointer t-border-b-2 border-indigo-500"
                              onclick="location.href='{% url 'board:detail' humor.board_id humor.id%}'">
                             <div class=" t-w-max">
-                                <span class="text-base t-h-5 t-leading-1">{{ humor.subject}}</span>
+                                <span class="text-base t-h-5 t-leading-1">{{ humor.subject }}</span>
                                 <span class="t-text-xs t-text-blue-600/75">{{ humor.comment.count}}</span>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                 {% if free_index %}
                 <div style="width:450px;" class="t-mr-3">
                     <a href="{% url 'board:category' 2 %}"
-                       class="t-text-teal-400 fs-1 t-my-2 t-border-b-2 t-border-black t-w-max">유머 게시판</a>
+                       class="t-text-teal-400 fs-1 t-my-2 t-border-b-2 t-border-black t-w-max">자유 게시판</a>
                     <div>
                         {% for free in free_index %}
                         <div class="t-mb-1 t-cursor-pointer t-border-b-2 border-indigo-500"

@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('update_date', models.DateTimeField(auto_now=True, verbose_name='수정날짜')),
                 ('content', models.TextField(verbose_name='내용')),
                 ('is_modify', models.BooleanField(default=False, verbose_name='수정 가능 여부')),
-                ('article', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='board.article')),
+                ('article', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='comment', to='board.article')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
 
             ],

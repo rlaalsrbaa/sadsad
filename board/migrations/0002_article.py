@@ -17,7 +17,7 @@ def gen_data(app, schema_editor):
         user = User.objects.get(id=1)
         Article(board_id=board.id, user=user, subject=subject, content=content, writer=user.username).save()
     for id in range(1, 20):
-        subject = f"공지사항 필독?{id}"
+        subject = f"공지사항 필독{id}"
         content = f"맛있게 먹었습니다..{id}"
         user = User.objects.get(id=2)
         Article(board_id=board.id, user=user, subject=subject, content=content, writer=user.username).save()

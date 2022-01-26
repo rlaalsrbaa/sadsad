@@ -55,6 +55,7 @@ class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='comment')
     is_modify = models.BooleanField('수정 가능 여부', default=False)
     voter = models.ManyToManyField(User, related_name='voter_comment')
+
     def __str__(self):
         return self.content
 

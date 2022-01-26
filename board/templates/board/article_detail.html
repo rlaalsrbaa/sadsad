@@ -9,17 +9,17 @@
                 {{article.subject}}
             </div>
             <div class="card-body t-min-h-screen t-flex-wrap">
-                    <p class="card-text t-text-left">{{article.content|safe}}</p>
-                    {% if article.mainphoto %}
-                    <img src="{{ article.photo.url }}" alt="" height="600">
-                    <br>
-                    {% endif %}
-                <div class="t-w-full t-flex t-justify-center">
-                    <button class="t-mt-6 btn btn-primary like" name="{{article.id}}"><i class="far fa-thumbs-up"
-                                                                                         style="display:inline;"></i>
-                        <p id="count-{{ article.id }}" style="display:inline;">{{ article.voter.all.count }}</p>
-                    </button>
-                </div>
+                <p class="card-text t-text-left">{{article.content|safe}}</p>
+                {% if article.mainphoto %}
+                <img src="{{ article.photo.url }}" alt="" height="600">
+                <br>
+                {% endif %}
+            </div>
+            <div class="t-w-full t-flex t-justify-center t-mb-5">
+                <button class=" t-m-auto t-mt-6 btn btn-primary like" name="{{article.id}}"><i class="far fa-thumbs-up"
+                                                                                               style="display:inline;"></i>
+                    <p id="count-{{ article.id }}" style="display:inline;">{{ article.voter.all.count }}</p>
+                </button>
             </div>
             <div class="card-footer text-muted">
                 {{article.reg_date}}
@@ -174,6 +174,7 @@
             },
         });
     })
+
 
 
 

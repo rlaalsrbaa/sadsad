@@ -32,14 +32,16 @@
                         <span>{{article.subject}}</span>
                         <span class="t-text-xs t-text-blue-600/75">{{ article.comment.count}}</span>
                     </div>
-                    <div>
-                        <span class="t-text-blue-600/50 t-text-xs"><i class="far fa-thumbs-up"></i> {{article.voter.count}}</span>
+                    <div class="t-flex">
+                        <span class="t-text-blue-600/50 t-text-xs t-w-fit t-whitespace-nowrap t-leading-5 t-mr-5"><i class="far fa-thumbs-up"></i> {{article.voter.count}} </span>
                         {% if article.created_string == False %}
-                        <span class="t-text-xs">{{ article.registered_date|date:'m월 d일' }}</td></span>
+                        <span class="t-text-xs t-w-fit t-whitespace-nowrap t-leading-5 t-text-slate-400"><i class="far fa-clock"></i> {{ article.registered_date|date:'m월 d일' }}</td></span>
                         {% else %}
-                        <span class="t-text-xs">{{ article.created_string }}</span>
+                        <span class="t-text-xs t-w-fit t-whitespace-nowrap	t-leading-5 t-text-slate-400"><i class="far fa-clock"></i> {{ article.created_string }}</span>
                         {% endif %}
-                        <span class="t-text-xs t-right-0">{{article.writer}}</span>
+                        <div class="t-inline-block t-w-full t-text-right">
+                        <span class="t-text-xs">{{article.writer}}</span>
+                        </div>
                     </div>
                 </div>
                 {%endfor%}
