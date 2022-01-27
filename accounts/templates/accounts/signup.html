@@ -1,10 +1,12 @@
 {% extends "layout.html" %}
 {%block content%}
-<div class="container" style="margin-top:50px;">
-    <div class="row">
-        <div class="col-sm-6 offset-sm-3">
-            {% include "_form.html" with form_title="회원가입" submit_label="회원가입" %}
+<div class="t-bg-slate-100 t-h-screen">
+    <div class="container t-mt-5">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+                {% include "_form.html" with form_title="회원가입" submit_label="회원가입" %}
+            </div>
         </div>
     </div>
 </div>
-{%endblock%}
+        {%endblock%}
